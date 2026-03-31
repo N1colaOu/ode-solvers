@@ -1,22 +1,22 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-#------------------------------------%  
+#------------------------------------#
+#input your function here
 def f(t, y):
-    #input your function here
     return y - 0.5*np.exp(t/2)*np.sin(5*t) + 5*np.exp(t/2)*np.cos(5*t)
 h = 0.05
 t_start = 0
 t_end = 10
 y0 = 0
-#------------------------------------%
+#------------------------------------#
 
 def y_n1(t_n, y_n, h):
     A = f(t_n, y_n)
     B = f(t_n + h,  y_n + A*h)
     return y_n + (A + B) * h / 2
 
-t_span = float(np.abs(t_end - t_start))
+t_span = np.abs(t_end - t_start)
 n = int(t_span/h)
 t = np.linspace(t_start, t_end, n)
 y = np.zeros(n, dtype=float)
@@ -33,12 +33,3 @@ ax1.set_ylabel('y(t)')
 ax1.legend(['RK2'])
 ax1.set_title('RK2')
 plt.show()
-
-#plt.plot(t, y)
-
-#plt.xlabel('t')
-#plt.ylabel('y(t)')
-#plt.legend(['RK2'])
-#plt.title('RK2')
-
-

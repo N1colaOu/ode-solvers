@@ -2,8 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 #------------------------------------#
-def f(t, y):
 #input your function here
+def f(t, y):
     return y - 0.5*np.exp(t/2)*np.sin(5*t) + 5*np.exp(t/2)*np.cos(5*t)
 h = 0.001
 t_start = 0.0

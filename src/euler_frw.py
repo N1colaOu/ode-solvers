@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 #input your function here
 def f(t, y):
     return y - 0.5*np.exp(t/2)*np.sin(5*t) + 5*np.exp(t/2)*np.cos(5*t)
-h = 0.001
+h = 1e-2
 t_start = 0.0
 t_end = 10.0
 y0 = 0.0
@@ -28,6 +28,6 @@ ax.plot(t, y)
 
 ax.set_xlabel('t')
 ax.set_ylabel('y(t)')
-ax.legend(['RK1(Euler)'])
-ax.set_title('Euler Method')
+#ax.legend(['RK1(Euler)'])
+ax.set_title('Explcit Euler Method')
 plt.show()

@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 #input your function here
 def f(t, y):
     return y - 0.5*np.exp(t/2)*np.sin(5*t) + 5*np.exp(t/2)*np.cos(5*t)
-h = 0.05
+h = 1e-3
 t_start = 0.0
 t_end = 10.0
 y0 = 0.0

@@ -42,10 +42,4 @@ def get_sol(t_start, t_end, h, y0, f):
     y[0] = y0
     for i in range(n-1):
         y[i+1] = y_n1(t[i+1], y[i])
-    return y, t
-"""
-    fig, ax = plt.subplots(figsize = (5, 5), layout = 'constrained')
-    ax.plot(t, y)
-    ax.set(xlim = [t_start, t_end], xlabel = "t", ylabel = "y(t)", title = "Implicit Euler")
-    plt.show()
-"""
+    return y

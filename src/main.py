@@ -14,20 +14,20 @@ t_start = 0.0
 t_end = 10.0
 y0 = 0.0
 
-euler_f_y = efr.get_sol(t_start, t_end, h, y0, f)[0]
-euler_b_y = ebw.get_sol(t_start, t_end, h, y0, f)[0]
-heun_rk2_y = rk2.get_sol(t_start, t_end, h, y0, f)[0]
-rk4_y = rk4.get_sol(t_start, t_end, h, y0, f)[0]
-adaptive_y = adp.get_sol(t_start, t_end, h, y0, f)[0]
-#solution = cmp.get_sol(t_start, t_end, h, y0, f)[0]
-t = efr.get_sol(t_start, t_end, h, y0, f)[1]
 
+euler_f_y = efr.get_sol(t_start, t_end, h, y0, f)
+euler_b_y = ebw.get_sol(t_start, t_end, h, y0, f)
+heun_rk2_y = rk2.get_sol(t_start, t_end, h, y0, f)
+rk4_y = rk4.get_sol(t_start, t_end, h, y0, f)
+adaptive_y = adp.get_sol(t_start, t_end, h, y0, f)
+solution = cmp.get_sol(t_start, t_end, h, y0, f)
+t = np.linspace(t_start, t_end, int((t_end-t_start)/h))
 
 plt.figure()
 
 #euler forward
 plt.subplot(321)
-plt.plot(t, euler_f_y)
+plt.scatter(t, euler_f_y, linewidths=1e-1, marker="x")
 plt.title("Forward Euler")
 #euler back2ward
 plt.subplot(322)
@@ -43,10 +43,12 @@ plt.plot(t, rk4_y)
 plt.title("RK4")
 #adaptive
 plt.subplot(325)
-plt.plot(t, adaptive_y)
+plt.scatter(t, adaptive_y, linewidths=1e-1, marker="x")
 plt.title("Adaptive Method")
 #solution to compare with
-#lt.subplot(226)
+plt.subplot(326)
+plt.plot(solution[0])
+plt.title("Most Accurate Version")
 
 plt.subplots_adjust(top=0.92, bottom=0.08, left=0.10, right=0.95, hspace=0.5, wspace=0.35)
 plt.show()

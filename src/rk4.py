@@ -29,10 +29,4 @@ def get_sol(t_start, t_end, h, y0, f):
     for i in range(0, n-1):
         y[i+1] = y_n1(t[i], y[i], h)
 
-    return y, t
-"""  
-    fig, ax = plt.subplots(figsize = (5, 5), layout = 'constrained')
-    ax.plot(t, y)
-    ax.set(xlim = [t_start, t_end], xlabel = "t", ylabel = "y(t)", title = "RK4")
-    plt.show()
-"""
+    return y

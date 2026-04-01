@@ -25,9 +25,5 @@ for i in range(0, n-1):
 
 fig, ax = plt.subplots(figsize = (5, 5), layout = 'constrained')
 ax.plot(t, y)
-
-ax.set_xlabel('t')
-ax.set_ylabel('y(t)')
-#ax.legend(['RK1(Euler)'])
-ax.set_title('Explcit Euler Method')
+ax.set(xlim = [t_start, t_end], xlabel = "t", ylabel = "y(t)", title = "Explicit Euler")
 plt.show()

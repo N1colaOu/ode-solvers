@@ -25,11 +25,7 @@ for i in range(0, n-1):
     y[i+1] = y_n1(t[i], y[i], h)
 
 
-fig1, ax1 = plt.subplots(figsize = (6, 5), layout = 'constrained')
-ax1.plot(t, y)
-
-ax1.set_xlabel('t')
-ax1.set_ylabel('y(t)')
-ax1.legend(['RK2'])
-ax1.set_title('RK2')
+fig, ax = plt.subplots(figsize = (5, 5), layout = 'constrained')
+ax.plot(t, y)
+ax.set(xlim = [t_start, t_end], xlabel = "t", ylabel = "y(t)", title = "Heun/RK2")
 plt.show()

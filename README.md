@@ -43,7 +43,7 @@ An Euler Method in its essence, but instead of a constant step size, it dynamica
 Each of the methods has been tested on 3 different cases and compared to an analitycal/accurate numerical solution. A convergence and an error study have also been performed. The examples worked out are:
 - The Logistic Equation: $y' = -y$, $y(0) = 1$
 - Damped Harmonic Oscillator: $y'' + 2\zeta\omega_0y' + \omega_0^2y = 0$, where $\zeta = 0.2, \omega_0 = 1, y(0) = 1, y'(0) = 0$ 
-- A Stiff Problem: $y' = -1000(y-cos(t))$, $y(0) = 0$
+- A Stiff Problem: $y' = -1000(y-cos(t))$, $y(0) = 1$
 
 
 ## Instructions

@@ -1,17 +1,5 @@
 import numpy as np
-import matplotlib.pyplot as plt
 
-#------------------------------------#
-"""
-#input your function here
-def f(t, y):
-    return y - 0.5*np.exp(t/2)*np.sin(5*t) + 5*np.exp(t/2)*np.cos(5*t)
-h = 1e-2
-t_start = 0.0
-t_end = 10.0
-y0 = 0.0
-#------------------------------------#
-"""
 def get_sol(t_start, t_end, h, y0, f):
     def adjust_h(t_n, y_n, h, tol1 = 1e-4, tol2 = 2e-4):
         A = f(t_n, y_n)

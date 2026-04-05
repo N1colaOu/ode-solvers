@@ -16,11 +16,11 @@ def get_sol(t_start, t_end, h, y0, f, low = 1e-5, high = 1e-4, incr = 3, decr = 
             y2_2 = y2_1 + step_to_find/2 * f(t+step_to_find/2, y2_1)
 
             error = np.abs(y2_2 - y1) / np.abs(y1)
-            if error < low: #close enough -> increase h
+            if error < low: #too close -> increase h
                 step_to_find *= incr
                 if step_to_find > 1:
                     break #too large
-            elif error > high: #big error -> decrease h
+            elif error > high: #too far -> decrease h
                 step_to_find /= decr
                 if step_to_find < 1e-12:
                     break #too small

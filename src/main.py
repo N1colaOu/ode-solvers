@@ -60,7 +60,8 @@ plt.plot(t, solution)
 plt.title("Most Accurate Version")
 plt.xlim([t_start, t_end])
 
-plt.subplots_adjust(top=0.92, bottom=0.08, left=0.10, right=0.95, hspace=0.5, wspace=0.35)
+plt.subplots_adjust(top=0.87, bottom=0.08, left=0.10, right=0.95, hspace=0.5, wspace=0.35)
+plt.suptitle("Solution Comparison")
 plt.show()
 
 

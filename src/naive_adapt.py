@@ -1,6 +1,6 @@
 import numpy as np
 
-def get_sol(t_start, t_end, h, y0, f, low = 1e-5, high = 1e-4, incr = 3, decr = 2):
+def get_sol(t_start, t_end, h, y0, f, low = 1e-7, high = 1e-6, incr = 3, decr = 2): #if problems -> tweak tolerance
 
     y_list = [y0]
     t_list = [t_start]
@@ -15,7 +15,7 @@ def get_sol(t_start, t_end, h, y0, f, low = 1e-5, high = 1e-4, incr = 3, decr = 
             y2_1= y_list[-1] + step_to_find/2 * A
             y2_2 = y2_1 + step_to_find/2 * f(t+step_to_find/2, y2_1)
 
-            error = np.abs(y2_2 - y1) / np.abs(y1)
+            error = np.abs(y2_2 - y1) / np.abs(y1) #check difference between both iterations
             if error < low: #too close -> increase h
                 step_to_find *= incr
                 if step_to_find > 1:

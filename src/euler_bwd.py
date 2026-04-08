@@ -10,14 +10,14 @@ def get_sol(t_start, t_end, h, y0, f):
         return x - h*f(k, x) - c
     def dg(x, k, h):
         return 1 - f(k, x) + f(k, x-h)
-    def newtons_method(x0, tn1, yn, max_iterations = 20, tolerance = 1e-5, epsilon = 1e-5):
+    def newtons_method(x0, tn1, yn, max_iterations = 20, tolerance = 1e-5, epsilon = 1e-5): #typical Newton-Raphson method 
         for _ in range(max_iterations):       
             y = g(x0, tn1, yn, h)        
             y_prime = dg(x0, tn1, h)   
-            if abs(y_prime) < epsilon:                 
+            if abs(y_prime) < epsilon: #check if divide by too little              
                 break 
             x1 = x0 - y / y_prime           
-            if abs(x1 - x0) <= tolerance:  
+            if abs(x1 - x0) <= tolerance:  #check if we are close enough to exit
                 return x1            
             x0 = x1                       
         return None  
@@ -28,5 +28,5 @@ def get_sol(t_start, t_end, h, y0, f):
     y = np.zeros(n, dtype=float)
     y[0] = y0
     for i in range(n-1):
-        y[i+1] = y_n1(t[i+1], y[i])
+        y[i+1] = y_n1(t[i], y[i])
     return y

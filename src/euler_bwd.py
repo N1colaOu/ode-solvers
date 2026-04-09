@@ -1,16 +1,13 @@
-import numpy as np
-
-def get_sol(t_start, t_end, h, y0, f):
+def get_sol(t, y0, f):
+    h = t[1] - t[0]
     def y_n1(tn1, yn):
         res = newtons_method(yn, tn1, yn)
-        if res != None:
-            res = newtons_method(yn, tn1, yn)
         return res
     def g(x, k, c, h):
         return x - h*f(k, x) - c
     def dg(x, k, h):
-        return 1 - f(k, x) + f(k, x-h)
-    def newtons_method(x0, tn1, yn, max_iterations = 20, tolerance = 1e-5, epsilon = 1e-5): #typical Newton-Raphson method 
+        return 1 - f(k, x+h) + f(k, x) #use +h/ or /-h
+    def newtons_method(x0, tn1, yn, max_iterations = 20, tolerance = 1e-9, epsilon = 1e-5): #typical Newton-Raphson method 
         for _ in range(max_iterations):       
             y = g(x0, tn1, yn, h)        
             y_prime = dg(x0, tn1, h)   
@@ -22,11 +19,7 @@ def get_sol(t_start, t_end, h, y0, f):
             x0 = x1                       
         return None  
 
-    t_span = np.abs(t_end - t_start)
-    n = int(t_span/h)
-    t = np.linspace(t_start, t_end, n)
-    y = np.zeros(n, dtype=float)
-    y[0] = y0
-    for i in range(n-1):
-        y[i+1] = y_n1(t[i], y[i])
+    y = [y0]
+    for i in range(len(t)-1):
+        y.append(y_n1(t[i+1], y[i]))
     return y

@@ -8,22 +8,22 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def f(t, y):
-    return 20*np.cos(10*t)
-h = 1e-3
+    return -y
+n = 1e2
 t_start = 0.0
 t_end = 10.0
-y0 = 1.0
+y0 = 1
+t = np.linspace(t_start, t_end, int(n))
 
 
-euler_f_y = efr.get_sol(t_start, t_end, h, y0, f)
-euler_b_y = ebw.get_sol(t_start, t_end, h, y0, f)
-heun_rk2_y = rk2.get_sol(t_start, t_end, h, y0, f)
-rk4_y = rk4.get_sol(t_start, t_end, h, y0, f)
-adaptive = adp.get_sol(t_start, t_end, h, y0, f)
+euler_f_y = efr.get_sol(t, y0, f)
+euler_b_y = ebw.get_sol(t, y0, f)
+heun_rk2_y = rk2.get_sol(t, y0, f)
+rk4_y = rk4.get_sol(t, y0, f)
+adaptive = adp.get_sol(t_start, t_end, t[1]-t[0], y0, f)
 adaptive_y = adaptive[0]
 adaptive_t = adaptive[1]
-solution = cmp.get_sol(t_start, t_end, h, y0, f)
-t = np.linspace(t_start, t_end, int((t_end-t_start)/h))
+solution = cmp.get_sol(t, y0, f)
 
 
 plt.figure()

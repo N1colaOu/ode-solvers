@@ -1,8 +1,7 @@
-import euler_frw as efr
-import euler_bwd as ebw
-import heun as rk2
-import rk4 as rk4
-import to_compare as cmp
+import src.euler_frw as efr
+import src.euler_bwd as ebw
+import src.heun as rk2
+import src.rk4 as rk4
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -10,9 +9,7 @@ def f(t, y):
     return -y
 t_start = 0.0
 t_end = 10.0
-y0 = 1
-
-
+y0 = 1.0
 
 err_eulerf = []
 err_eulerb= []
@@ -20,7 +17,6 @@ err_heun = []
 err_rk4 = []
 N = []
 h = []
-#solution = cmp.get_sol(np.linspace(t_start, t_end, int(1e8)), y0, f)
 solution = np.exp(-np.linspace(t_start, t_end, int(1e8)))
 for i in range(3, 14):
     N.append(2**i)
@@ -67,8 +63,6 @@ plt.title("Forward Euler")
 plt.legend(["Actual Error", "Theoretical Error"])
 plt.xlabel("log10(h)")
 plt.ylabel("log10(E(h))")
-#plt.plot([[-3,-3], [2,2]])
-#plt.xlim([t_start, t_end])
 #euler back2ward
 plt.subplot(222)
 plt.plot(log_h_x, log_eulerb_y)
@@ -78,7 +72,6 @@ plt.title("Backward Euler")
 plt.legend(["Actual Error", "Theoretical Error"])
 plt.xlabel("log10(h)")
 plt.ylabel("log10(E(h))")
-#plt.xlim([t_start, t_end])
 #adaptive
 plt.subplot(223)
 plt.plot(log_h_x, log_heun_y)
@@ -88,7 +81,6 @@ plt.title("Heun/RK2")
 plt.legend(["Actual Error", "Theoretical Error"])
 plt.xlabel("log10(h)")
 plt.ylabel("log10(E(h))")
-#plt.xlim([t_start, t_end])
 #heun
 plt.subplot(224)
 plt.plot(log_h_x, log_rk4_y)
@@ -98,10 +90,9 @@ plt.title("RK4")
 plt.legend(["Actual Error", "Theoretical Error"])
 plt.xlabel("log10(h)")
 plt.ylabel("log10(E(h))")
-#plt.xlim([t_start, t_end])
 
 plt.subplots_adjust(top=0.87, bottom=0.08, left=0.10, right=0.95, hspace=0.5, wspace=0.35)
 plt.suptitle("Error Comparison")
+plt.savefig('err_exp.png')
 plt.show()
-
 

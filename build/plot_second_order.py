@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import solve_osc as osc
+import src.solve_osc as osc
 
 #y'' + ay' + by = 0
 #Input paramters:
@@ -18,4 +18,6 @@ y = osc.solve(y_0, dy_0, a, b, t)
 plt.plot(t, y)
 plt.title("Damped Oscillations")
 plt.xlim([t_start, t_end])
+plt.xlabel("t")
+plt.ylabel("y(t)")
 plt.show()

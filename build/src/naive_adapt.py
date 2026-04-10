@@ -1,6 +1,6 @@
 import numpy as np
 
-def get_sol(t_start, t_end, h, y0, f, low = 1e-7, high = 1e-6, incr = 3, decr = 2): #if problems -> tweak tolerance
+def get_sol(t_start, t_end, h, y0, f, low = 1e-5, high = 1e-4, incr = 3, decr = 2): #if problems -> tweak tolerance
 
     y_list = [y0]
     t_list = [t_start]

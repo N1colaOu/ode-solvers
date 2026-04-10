@@ -13,18 +13,21 @@ n = 1e2
 t_start = 0.0
 t_end = 10.0
 y0 = 1
+_low = 5e-6
+_high = 5e-5
+m_iter = 20
+eps_eb = 1e-9
+tol_eb = 1e-5
+
 t = np.linspace(t_start, t_end, int(n))
-
-
 euler_f_y = efr.get_sol(t, y0, f)
-euler_b_y = ebw.get_sol(t, y0, f)
+euler_b_y = ebw.get_sol(t, y0, f, m_iter, tol_eb, eps_eb)
 heun_rk2_y = rk2.get_sol(t, y0, f)
 rk4_y = rk4.get_sol(t, y0, f)
-adaptive = adp.get_sol(t_start, t_end, t[1]-t[0], y0, f, low=5e-6, high=5e-5)
+adaptive = adp.get_sol(t_start, t_end, t[1]-t[0], y0, f, low=_low, high=_high)
 adaptive_y = adaptive[0]
 adaptive_t = adaptive[1]
-#solution = cmp.get_sol(t, y0, f)
-solution = 1000*(np.sin(t) + 1000*np.cos(t))/(1000**2+1) + 1/(np.exp(1000*t)*(1000**2+1))
+solution = cmp.get_sol(t, y0, f)
 
 plt.figure()
 #euler forward
@@ -62,6 +65,7 @@ plt.xlim([t_start, t_end])
 
 plt.subplots_adjust(top=0.87, bottom=0.08, left=0.10, right=0.95, hspace=0.5, wspace=0.35)
 plt.suptitle("Solution Comparison")
+plt.savefig("methods_all.png")
 plt.show()
 
 

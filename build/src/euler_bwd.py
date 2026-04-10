@@ -1,4 +1,4 @@
-def get_sol(t, y0, f):
+def get_sol(t, y0, f, m_iter = 20, tol = 1e-9, eps = 1e-5):
     h = t[1] - t[0]
     def y_n1(tn1, yn):
         res = newtons_method(yn, tn1, yn)
@@ -7,7 +7,7 @@ def get_sol(t, y0, f):
         return x - h*f(k, x) - c
     def dg(x, k, h):
         return 1 - f(k, x+h) + f(k, x) #use +h/ or /-h
-    def newtons_method(x0, tn1, yn, max_iterations = 20, tolerance = 1e-9, epsilon = 1e-5): #typical Newton-Raphson method 
+    def newtons_method(x0, tn1, yn, max_iterations = m_iter, tolerance = tol, epsilon = eps): #typical Newton-Raphson method 
         for _ in range(max_iterations):       
             y = g(x0, tn1, yn, h)        
             y_prime = dg(x0, tn1, h)   
